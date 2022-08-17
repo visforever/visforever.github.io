@@ -1,12 +1,242 @@
-<html>
+<!DOCTYPE html>
+<!-- Refer to url=https://yetanmoney.com/ Thanks a lot, upperclassman!-->
+<html lang="zh-CN">
 
 <head>
-<title>welcome to my vis journal</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Way2Vis</title>
+
+	<link rel="stylesheet" id="wp-block-library-css"
+		href="./blog/blogCSS/wp-includes.css.dist.block-library.style.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="type-fonts-css" href="./blog/blogCSS/t-font.css" type="text/css" media="all">
+	<link rel="stylesheet" id="type-material-icons-css" href="./blog/blogCSS/icon.css" type="text/css" media="all">
+
+	<link rel="stylesheet" id="type-social-icons-css"
+		href="./blog/blogCSS/wp-content.themes.type-plus.fonts.socicon.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="type-style-css" href="./blog/blogCSS/wp-content.themes.type-plus.style.css"
+		type="text/css" media="all">
+
+	<link rel="stylesheet" id="type-blocks-style-css"
+		href="./blog/blogCSS/wp-content.themes.type-plus.inc.css.blocks.css" type="text/css" media="all">
+
+	<link rel="stylesheet" id="type-slider-css-css"
+		href="./blog/blogCSS/wp-content.themes.type-plus.inc.slick.slick.min.css" type="text/css" media="all">
+	<link rel="stylesheet" id="jetpack_css-css" href="./blog/blogCSS/wp-content.plugins.jetpack.css.jetpack.css"
+		type="text/css" media="all">
+		
+	<link rel="stylesheet" id="type-style-inline-css" href="./blog/blogCSS/belowMeta01.css" type="text/css" media="all">
+	<link rel="stylesheet" href="./blog/blogCSS/belowMeta02.css" type="text/css" media="all">
+	<link rel="stylesheet" href="./blog/blogCSS/belowMeta03.css" type="text/css" media="all">
+	<link rel="stylesheet" href="./blog/blogCSS/belowMeta04.css" type="text/css" media="all">
+	<link rel="stylesheet" href="./blog/blogCSS/belowMeta05.css" type="text/css" media="all">
+	<link rel="stylesheet" href="./blog/blogCSS/belowMeta06.css" type="text/css" media="all">
+	
+
+	<script type="text/javascript" src="./blog/blogJS/wp-includes.js.jquery.jquery.js"></script>
+	<script type="text/javascript" src="./blog/blogJS/wp-includes.js.jquery.jquery-migrate.min.js"></script>
+
+
+	<link rel="icon" href="./blog/favicon.ico?fit=32%2C32&amp;ssl=1" sizes="32x32">
+	<link rel="icon" href="./blog/favicon2.png?fit=192%2C192&amp;ssl=1" sizes="192x192">
+
+	<link rel="apple-touch-icon-precomposed" href="./blog/favicon3.png?fit=180%2C180&amp;ssl=1">
+
+	<meta name="msapplication-TileImage" content="./blog/favicon4.png?fit=270%2C270&amp;ssl=1">
+
+
 </head>
 
-<body>
+<body onload="PR.prettyPrint()" class="home blog wp-custom-logo hfeed header-layout2 content-sidebar">
 
-hello, my vis!
+	<div id="page" class="site">
+
+		<header id="masthead" class="site-header has-header-image">
+
+			<div class="home-site-title-centered">
+
+				<div class="site-branding">
+					<h1 class="site-title site-logo">
+						<a href="#" class="custom-logo-link" rel="home">
+							<img height="50" width="50" src="./blog/favicon.ico" class="custom-logo" alt="ALTTAO">
+						</a>
+					</h1>
+
+					<p class="site-description">能登上金字塔的生物只有两种 - 鹰和蜗牛</p>
+					<p class="site-description">There are only two creatures who can surmount the pyramids - the eagle and the snail.</p>
+					
+				</div><!-- #site-branding -->
+
+				<!-- #header bg-image -->
+				<div class="header-image" style="background-image:url('./blog/blog bg/blogbg6.jpg')"></div>
+
+				<!-- 也可以用
+					<div style="height:400px; background-image:url('./blog/blog bg/blogbg3.jpg');"></div>
+				-->
+
+			</div>
+
+		</header><!-- #masthead -->
+
+
+		<div id="content" class="site-content">
+			<div class="container">
+				<!--控制container的空间分布文件在wp-content.themes.type-plus.style.css，搜索：/*tao即可-->
+				<div class="inside">
+
+					<div id="primary" class="content-area">
+						<main id="main" class="site-main">
+
+							<section class="row posts-loop ">
+
+								<div class="post-wrapper col-12">
+									<article id="#" class="list-post hentry">
+										<!--入口Tag & Time & Title-->
+										<div class="entry-header">
+											<!--入口Title-->
+											<!--第1/5处修改：href, title-->
+											<h2 class="entry-title">
+												<a href="https://github.com/visforever/visforever.github.io/blob/main/SNS_prj01_weibo0331/notes/DataProcessing01_csv2mongoDB.ipynb" target="_blank">
+													csv2db: 将CSV文件导入MongoDB数据库
+												</a>
+											</h2>
+											
+											<div class="entry-meta">
+												<!--入口Tag-->
+												<!--第2/5处修改：tag_href, tag-->
+												<span class="cat-links">
+													<a href="./blog/blogNotes/tag_tools.html" rel="category tag">Tools</a>,
+													<a href="./blog/blogNotes/tag_sns_code.html" rel="category tag">SNS</a>
+												</span>
+
+												<!--入口Time-->
+												<!--第3/5处修改(2)：time-->
+												<span class="posted-on">													
+														<time>2022-08-17</time>
+												</span>
+											</div>
+										</div><!-- .entry-header -->
+
+										<!--入口-简介-->
+										<!--第4/5处修改(1)：p-->
+										<div class="entry-summary">
+											<p>简述：使用Python将.csv文件导入到MongoDB中（内附：①新建字段的感受，②检索问题的收获）</p>
+											<p>BlogID: [<font color='red'>Py08171</font>]</p>
+										</div><!-- .entry-content -->
+										
+									</article><!-- #post-## -->
+								</div>
+											
+								
+								<!-- 新建一条blog的时候，记住去掉这个属性：hidden="hidden" -->
+								<div class="post-wrapper col-12" hidden="hidden">
+									<article id="#" class="list-post hentry">
+										<!--入口Tag & Time & Title-->
+										<div class="entry-header">
+											<!--入口Title-->
+											<!--第1/5处修改：href, title-->
+											<h2 class="entry-title">
+												<a href="./blog/blogNotes/NewAndModify.html" target="_blank">
+													A blank page
+												</a>
+											</h2>
+											
+											<div class="entry-meta">
+												<!--入口Tag-->
+												<!--第2/5处修改：tag_href, tag-->
+												<span class="cat-links">
+													<a href="./blog/blogNotes/tag_tools.html" rel="category tag">xxx</a>,
+													<a href="./blog/blogNotes/tag_sns_code.html" rel="category tag">xxx</a>
+												</span>
+
+												<!--入口Time-->
+												<!--第3/5处修改(2)：time-->
+												<span class="posted-on">													
+														<time>20xx-xx-xx</time>
+												</span>
+											</div>
+										</div><!-- .entry-header -->
+
+										<!--入口-简介-->
+										<!--第4/5处修改(1)：p-->
+										<div class="entry-summary">
+											<p>[简述：]</p>
+											<p>BlogID: [<font color='red'>Pyxxxx1</font>]</p>
+										</div><!-- .entry-content -->
+										
+									</article><!-- #post-## -->
+								</div>
+
+							</section>
+
+						</main>
+						<!-- #main -->
+					</div>
+					<!-- #primary -->
+
+
+
+				</div><!-- .inside -->
+			</div><!-- .container -->
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer">
+
+			<aside class="widget-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-4 col-md-4" id="footer-area-1"></div>
+						<div class="col-4 col-md-4" id="footer-area-2"></div>
+						<div class="col-4 col-md-4" id="footer-area-3"></div>
+					</div>
+				</div><!-- .container -->
+			</aside><!-- .widget-area -->
+
+
+			<div class="footer-copy">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-6 col-sm-12">
+							<div class="site-credits">
+								© 2022 BesT.tao
+							</div>
+						</div>
+
+						<div class="col-6 col-sm-12"></div>
+					</div>
+
+				</div><!-- .container -->
+			</div><!-- .footer-copy -->
+
+		</footer><!-- #colophon -->
+
+		<a href="#masthead" id="scroll-up" style="display: block;">
+			<i class="material-icons md-20 md-middle"></i>
+		</a>
+
+	</div><!-- #page -->
+
+	<div style="display:none"></div>
+
+	<script type="text/javascript"
+		src="./blog/blogJS/wp-content.plugins.jetpack._inc.build.photon.photon.min.js"></script>
+	<script type="text/javascript" src="./blog/blogJS/wp-content.js.devicepx-jetpack.js"></script>
+	<script type="text/javascript" src="./blog/blogJS/wp-content.themes.type-plus.js.main.js"></script>
+	<script type="text/javascript" src="./blog/blogJS/wp-content.themes.type-plus.inc.slick.slick.min.js"></script>
+	<script type="text/javascript"
+		src="./blog/blogJS/wp-content.plugins.jetpack._inc.build.widgets.eu-cookie-law.eu-cookie-law.min.js"></script>
+
+	<script type="text/javascript"
+		src="./blog/blogJS/wp-content.plugins.jetpack._inc.build.widgets.milestone.milestone.min.js"></script>
+	<script type="text/javascript" src="./blog/blogJS/wp-includes.js.wp-embed.min.js"></script>
+	<script type="text/javascript" src="./blog/blogJS/stats.wp.com.e-202110.js" async="async" defer="defer"></script>
+
+	<!--代码美化-->
+	<script src="../../assets/google-code-prettify/prettify.js"></script>
 
 </body>
+
 </html>

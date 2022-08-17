@@ -1,0 +1,172 @@
+body,
+		button,
+		input,
+		select,
+		textarea {
+			font-family: Nunito\ Sans, sans-serif
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		.entry-title {
+			font-family: Poppins, sans-serif
+		}
+
+		.site-title {
+			font-family: Poppins, sans-serif
+		}
+
+		html,
+		body {
+			font-size: 16px
+		}
+
+		@media screen and (max-width:599px) {
+			.site-logo {
+				max-width: 100px
+			}
+		}
+
+		@media screen and (min-width:600px) {
+			.site-logo {
+				max-width: 200px
+			}
+		}
+
+		.header-image {
+			padding-top: 20px;
+			padding-bottom: 20px
+		}
+
+		a,
+		a:hover,
+		.site-info a:hover,
+		.entry-content .has-accent-color,
+		.site-credits a:hover,
+		.widget a:hover,
+		.widget-area ul li a:hover,
+		.comment-metadata a:hover,
+		.entry-header .comments-link a:hover,
+		.site-title a:hover,
+		.entry-title a:hover,
+		.category-title a:hover,
+		.entry-footer .material-icons,
+		.posts-navigation a:hover,
+		.large-post .read-more,
+		.main-navigation li:hover>a,
+		.main-navigation li:focus>a,
+		.main-navigation .current_page_item>a,
+		.main-navigation .current-menu-item>a,
+		.footer-menu li a:hover,
+		.category-title .view-all:hover,
+		.site-footer .col-12 #sb_instagram .sbi_follow_btn a:hover,
+		.dropdown-toggle:hover,
+		.dropdown-toggle:focus,
+		.related-posts h4 a:hover,
+		.shop-products .category a,
+		.shop-products .category a:hover {
+			color: #d93
+		}
+
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.entry-content .has-accent-background-color,
+		.large-post .read-more:hover,
+		.sidebar .widget_tag_cloud a:hover,
+		.reply a:hover,
+		.main-navigation>ul>li.current-menu-item:before,
+		.slick-dots li.slick-active button:before,
+		.slider-classic .read-more:hover,
+		#scroll-up,
+		.pagination a.page-numbers:hover,
+		.hero-button,
+		.shop-category a:hover span,
+		.button-link,
+		.shop-products figure .onsale,
+		.shop-slider .slider-item .onsale {
+			background-color: #d93
+		}
+
+		blockquote {
+			border-left-color: #d93
+		}
+
+		.large-post .read-more,
+		.reply a,
+		.posts-loop .entry-thumbnail:hover img,
+		.list-vertical .entry-thumbnail:hover,
+		.slider-classic .read-more {
+			border-color: #d93
+		}
+
+		.format-audio .entry-thumbnail:after,
+		.format-gallery .entry-thumbnail:after,
+		.format-image .entry-thumbnail:after,
+		.format-quote .entry-thumbnail:after,
+		.format-video .entry-thumbnail:after {
+			border-top-color: #d93
+		}
+
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.large-post .read-more:hover,
+		.sidebar .widget_tag_cloud a:hover,
+		.reply a:hover,
+		.format-audio .entry-thumbnail:before,
+		.format-gallery .entry-thumbnail:before,
+		.format-image .entry-thumbnail:before,
+		.format-quote .entry-thumbnail:before,
+		.format-video .entry-thumbnail:before,
+		.slider-classic .read-more:hover,
+		#scroll-up,
+		.pagination a.page-numbers:hover,
+		.hero-button,
+		.hero-button:hover,
+		.shop-category a:hover span,
+		.button-link,
+		.shop-products figure .onsale,
+		.shop-slider .slider-item .onsale {
+			color: rgba(0, 0, 0, .7)
+		}
+
+		.page-template-ecommerce .hero-header {
+			background-color: #eee
+		}
+
+		.page-template-ecommerce .hero-header h2 {
+			color: #000
+		}
+
+		.page-template-ecommerce .hero-content,
+		.page-template-ecommerce .hero-content a,
+		.page-template-ecommerce .hero-content a:hover {
+			color: #666
+		}
+
+		@media screen and (min-width:720px) {
+			.shop-promo {
+				padding: 30px
+			}
+		}
+
+		.shop-promo {
+			background-color: #f4f4f4
+		}
+
+		.shop-promo h2 {
+			color: #000
+		}
+
+		.promo-content,
+		.promo-content a,
+		.promo-content a:hover {
+			color: #666
+		}
