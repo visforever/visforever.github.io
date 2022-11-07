@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>科研过程记录</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4ebdfcc9-7002-477a-88c7-cf6eb9d255ed" class="page sans"><header></header><div class="page-body">
+
+
+
+
+
+<h1 id="f39ddb71-4cc0-47f4-8d2c-ef5df782928b" class="">⏳接下来的行动</h1><ul id="48738319-7360-40b4-86fe-7dd3c1a55491" class="toggle"><li><details open=""><summary>文本段（从文本段中提取信息、提取关键词、计算情感）</summary><ol type="1" id="420cad1f-9641-4853-b345-7f4c8425a075" class="numbered-list" start="1"><li>提取人名</li></ol><ol type="1" id="2962acde-40f6-4a50-8b19-8b25cab25c93" class="numbered-list" start="2"><li>提取地名</li></ol><ol type="1" id="b3158d62-657e-4eb3-a1a0-1a0bbaf379e7" class="numbered-list" start="3"><li>提取专业术语</li></ol><ol type="1" id="b3a9404c-7169-48e3-90df-fca602c449ce" class="numbered-list" start="4"><li>提取时间点</li></ol><p id="3c5d2302-396f-4459-959f-b0711bbf81a4" class="">
+</p><ul id="5cc9a9b8-7f87-4dd1-abdc-f65cb8a7c92a" class="bulleted-list"><li style="list-style-type:disc">主要字段<ul id="7fc465c7-6b7c-4b9b-af5a-e4993fa79158" class="bulleted-list"><li style="list-style-type:circle">标题与内容（含有用户、话题、表情、链接、<code><span style="border-bottom:0.05em solid"><strong>转发路径</strong></span></code>）<ul id="6b8db4ad-bb85-4a4d-9605-4c0c1c06a436" class="bulleted-list"><li style="list-style-type:square"><strong><mark class="highlight-red_background">Thought@file[</mark></strong><code><span style="border-bottom:0.05em solid"><strong><mark class="highlight-red_background">P1</mark></strong></span></code><span style="border-bottom:0.05em solid"><strong><mark class="highlight-red_background">博文影响力.vsdx</mark></strong></span><strong><mark class="highlight-red_background">]</mark></strong></li></ul></li></ul><ul id="1c871388-18e9-4101-9793-2118652a8a48" class="bulleted-list"><li style="list-style-type:circle">原始博文内容（含有用户、话题、表情、链接）</li></ul></li></ul></details></li></ul><ul id="c911874f-780c-44e3-87cf-4556d4f35334" class="toggle"><li><details open=""><summary>情感计算方面的行动</summary><ol type="1" id="fe92b20b-ad97-4875-8b55-45f8851324b9" class="numbered-list" start="1"><li>确定情感种类：3类（-1，0，1）</li></ol><ol type="1" id="8874ef29-0b72-43fa-8ed3-7e011d09710c" class="numbered-list" start="2"><li>找算法，计算一个例子</li></ol><ol type="1" id="befe4f4c-3180-4689-b3b7-9bbe0baca5ce" class="numbered-list" start="3"><li>找可视化方法，可视化出来</li></ol></details></li></ul><ul id="622aecd6-7da7-42bf-b211-e083fc84b3ad" class="toggle"><li><details open=""><summary>转发<strong><mark class="highlight-red_background">（</mark></strong><strong><mark class="highlight-red_background">Thought@file[</mark></strong><code><span style="border-bottom:0.05em solid"><strong><mark class="highlight-red_background">P2</mark></strong></span></code><span style="border-bottom:0.05em solid"><strong><mark class="highlight-red_background">转发分析.vsdx</mark></strong></span><strong><mark class="highlight-red_background">]</mark></strong><strong><mark class="highlight-red_background">）</mark></strong></summary><ol type="1" id="3001258b-7f58-42ef-8861-55269d27d819" class="numbered-list" start="1"><li>找高被引微博：排序被转发的微博（高被引）</li></ol><ol type="1" id="19294c70-2b9a-4fe3-893f-78d4e4cae7df" class="numbered-list" start="2"><li>分析被转人（信源人）<ol type="a" id="c4e02ccc-f554-4b7b-a767-17e33f482b78" class="numbered-list" start="1"><li>不是大v，消息肯定震撼（文本内容价值很大）</li></ol><ol type="a" id="539b30d1-afb7-48ba-a8b4-423438bb64c5" class="numbered-list" start="2"><li>是大v，是否意见领袖？是否关键人物？</li></ol></li></ol><ol type="1" id="5c1e8669-6def-4a5d-810f-5375e4d5ea2d" class="numbered-list" start="3"><li>分析转发人<ol type="a" id="b4a5aa05-00ea-40ee-a5c7-aecf1286db42" class="numbered-list" start="1"><li>是不是官媒？消息引起了关注？</li></ol><ol type="a" id="0f0aec6d-f179-4c17-a514-0384fa44ded3" class="numbered-list" start="2"><li>是不是大v？为什么会引起大v的关注？</li></ol><ol type="a" id="ef65937c-9093-4abe-a9f9-fcea5053ba64" class="numbered-list" start="3"><li>普通用户？引起了情感共鸣？分析情感。</li></ol></li></ol><ol type="1" id="86245ddd-2865-4f94-954c-9743e711e867" class="numbered-list" start="4"><li>被转发内容的传播途径分析<ol type="a" id="dd6dbe3a-55fc-4bbe-bb2b-7faf66bba544" class="numbered-list" start="1"><li>转发的路上，哪个起到了关键作用？（图里所谓的度非常大的那个）</li></ol></li></ol><ol type="1" id="77db40d8-6d2f-4bfe-b84c-c8646228bac7" class="numbered-list" start="5"><li>共同转发了某条微博的人群分析<blockquote id="ba52eefe-4b1a-45ce-9e9f-e416448c4f81" class="">人们更倾向于转发与自己相似的观点
+人们更倾向于转发来自朋友的观点
+so, 这群人应该有相似性</blockquote><ol type="a" id="7d20665a-f441-414c-abd4-32c98b3b6cef" class="numbered-list" start="1"><li>人群的地理位置是否一样？</li></ol><ol type="a" id="159c8dc8-165a-4d1e-a076-b627fb34310d" class="numbered-list" start="2"><li>流程图</li></ol></li></ol></details></li></ul><ul id="e8ec90c1-296e-4e18-9e6f-26e3351e697f" class="toggle"><li><details open=""><summary>时间（日期与时刻）</summary><ol type="1" id="b6070692-d955-4b93-9005-89781acf8726" class="numbered-list" start="1"><li>注意：时间粒度（scale）是一个指标和一个对比方向<ol type="a" id="6110c0bc-0fae-4dda-9165-ef0134a73e97" class="numbered-list" start="1"><li>维度/粒度的划分参考（30分钟/1小时/1天/1周/1月）</li></ol><ol type="a" id="a2921900-6360-4db1-99dc-e1282e1acd92" class="numbered-list" start="2"><li>不同维度的scale之间可以做对比</li></ol></li></ol><ol type="1" id="b70ce85b-e19a-4339-83ab-1f21b4c32266" class="numbered-list" start="2"><li>结合过去时空数据，与过去做对比</li></ol><ol type="1" id="22f98ea3-ec69-42cd-8a1e-3629da80147a" class="numbered-list" start="3"><li>结合空间数据 → 时空数据<ol type="a" id="245168ff-add8-46db-af95-0e8b12666d07" class="numbered-list" start="1"><li>轨迹 → 用户移动的轨迹<ol type="i" id="e4a56706-3ae4-47d4-bf76-a19fc578a1ca" class="numbered-list" start="1"><li>不同时空，同一用户的移动模式（对比、分析）</li></ol><ol type="i" id="8d9993f4-753c-46d8-bafa-b6e9601bddb0" class="numbered-list" start="2"><li>map-based vis</li></ol><ol type="i" id="cb7c9278-118c-4214-a5df-8218fdadc8f0" class="numbered-list" start="3"><li>timeline chart</li></ol></li></ol><ol type="a" id="eb3b4a16-8215-40ce-9329-cece8701b123" class="numbered-list" start="2"><li>事件的分布<ol type="i" id="dc553fc2-ec39-4bec-a735-dba8804302f6" class="numbered-list" start="1"><li>同一时间不同事件</li></ol><ol type="i" id="0faf01bb-25d7-4178-90fb-ed41b3d79c54" class="numbered-list" start="2"><li>同一时间相同事件</li></ol><ol type="i" id="e9844005-6dfb-4ec5-8f2f-2d92c64c6191" class="numbered-list" start="3"><li>不同时间不同事件</li></ol><ol type="i" id="e648c7f0-33d8-4221-b104-3609e93cd39c" class="numbered-list" start="4"><li>不同时间相同事件</li></ol></li></ol></li></ol><ol type="1" id="78ae79fe-8ffc-4ccd-ac89-e4eb2e77b370" class="numbered-list" start="4"><li>关系<ol type="a" id="424dac83-a7b2-4263-a5e4-a062e8f193da" class="numbered-list" start="1"><li>两个实体之间的关系，会随时间改变吗？</li></ol></li></ol><ol type="1" id="32cafaba-e216-4e7e-be44-9b4327a684c4" class="numbered-list" start="5"><li>话题的分层 与 时间的关系<ol type="a" id="915fb850-7877-4b15-888a-4472b6ed7195" class="numbered-list" start="1"><li>动态性</li></ol><ol type="a" id="bd116e47-6b42-4001-bb4b-d4739db0a657" class="numbered-list" start="2"><li>演变</li></ol><ol type="a" id="f0fc8b14-5a49-410c-b197-e0cae43090fd" class="numbered-list" start="3"><li>生存周期</li></ol></li></ol><ol type="1" id="5dc62736-53bf-4fbc-85bd-9304de8909b1" class="numbered-list" start="6"><li>情感随时间的变化<ol type="a" id="eef5e3e8-7e41-4928-866c-907e8c7586b3" class="numbered-list" start="1"><li>某个人：追踪微博记录</li></ol><ol type="a" id="699c1d74-416f-4aae-8ee3-173a2f66ce98" class="numbered-list" start="2"><li>公众（流数据？）：情感变化 →（预测）事件的高潮期</li></ol></li></ol><ol type="1" id="0bd63aee-f016-4a91-9236-6ac1aefb3b24" class="numbered-list" start="7"><li>实时监测（实时性）：很重要<ol type="a" id="6438f97e-03e1-4e1d-abfc-fb678119282f" class="numbered-list" start="1"><li>社会事件 → （分类过滤）→（识别）感兴趣的事件<ol type="i" id="e83eda2c-0991-4110-9b87-7815c6fc670a" class="numbered-list" start="1"><li>事件性质提取（娱乐、体育）</li></ol></li></ol><ol type="a" id="5545a710-34f8-4c91-b294-0d7f73e11e5b" class="numbered-list" start="2"><li>parallel coordinate<ol type="i" id="9390c64c-85c0-4471-add8-a1893d64f479" class="numbered-list" start="1"><li>事件的演变</li></ol><ol type="i" id="6d00a04e-216c-4219-87ae-a7b3f7c8e768" class="numbered-list" start="2"><li>话题的演变（sunflower visual）</li></ol></li></ol></li></ol><ol type="1" id="8e65dae7-5bd5-4883-9637-3ab98dd54b31" class="numbered-list" start="8"><li>时间峰值 <ol type="a" id="ebd2470f-5a05-4f83-a6be-d4ca12bedf8c" class="numbered-list" start="1"><li>→ 发现特殊事件</li></ol><ol type="a" id="bf4bec84-17ed-44be-9201-8da77002aedf" class="numbered-list" start="2"><li>基于事件 → 通过关健时间点（game start, goal ,halftime）→检测子事件<ol type="i" id="5f721246-7471-4e34-8a41-266cd84018ff" class="numbered-list" start="1"><li>场景描述（需要共现词 &amp; 语义分析）</li></ol><ol type="i" id="c5259ac5-f362-4f6c-a9d1-0016a2cc602e" class="numbered-list" start="2"><li>新电影 → 影评 → 票房预测</li></ol></li></ol></li></ol><ol type="1" id="66e0ecbc-4996-4f44-8d8d-17533f072296" class="numbered-list" start="9"><li>特定时间范畴识别异常情感<ol type="a" id="ce871937-da96-4c0e-8713-d84442248979" class="numbered-list" start="1"><li>scale + timeline chart + 语义分析</li></ol></li></ol><ol type="1" id="51bdf797-2649-4842-879e-ee2a65fa9c62" class="numbered-list" start="10"><li>随时间变化，某一个模式的演变 → 预测分析<ol type="a" id="67d425e4-f329-40ef-91df-551c0f43b5ea" class="numbered-list" start="1"><li>特征 → (预测）事件/运动/人类的意图、移动</li></ol></li></ol><ol type="1" id="38dee5e7-d1bd-4505-a6b5-bf29f61f8c69" class="numbered-list" start="11"><li>同时出现的<ol type="a" id="873f6c86-1bee-47b0-800d-faeccf7368e6" class="numbered-list" start="1"><li>同时段出现的<ol type="i" id="4298586a-f190-4b85-b51d-b7f93c758dea" class="numbered-list" start="1"><li>如何定义时段的段长</li></ol><ol type="i" id="2eb3fd9b-1453-4e49-9f65-30839926a4ff" class="numbered-list" start="2"><li>交互需要：指定时段<ol type="1" id="04db3c7e-2d14-406d-b70a-dfc37c908b3c" class="numbered-list" start="1"><li>话题分析</li></ol><ol type="1" id="ee294748-75c2-4fb5-abf9-a3fc428c8b21" class="numbered-list" start="2"><li>关键词分析</li></ol></li></ol></li></ol><hr id="0439e97d-085f-43ae-b3cf-89735faf4b80"/><ul id="d2708d36-e665-4eb1-a0c2-e62e95d090f9" class="bulleted-list"><li style="list-style-type:disc">不同时段提取出的话题 → 可以了解事件的演变</li></ul><ul id="935b56f1-634a-4c02-bd7e-10288c5840a3" class="bulleted-list"><li style="list-style-type:disc">事件的演变 → 会造成不同时段里话题不同<ul id="2d7f422b-ea8c-46f8-a8df-0506be249029" class="bulleted-list"><li style="list-style-type:circle">例如：新闻联播 / 金融时段 + 社交网络中的关键词<ul id="f55fb208-c81d-44ea-b55c-5c910bd32bba" class="bulleted-list"><li style="list-style-type:square">可以分析新闻政策对金融市场的影响</li></ul></li></ul></li></ul></li></ol><ol type="1" id="3e3b768e-acc7-4b66-a0b2-2de56f9316d6" class="numbered-list" start="12"><li>【人 + 话题】随时间的演变<ol type="a" id="d178e26e-6dfe-4fba-b217-74da618467ea" class="numbered-list" start="1"><li>Politics里很重要：例如总统大选</li></ol></li></ol><ol type="1" id="97c7ab57-7671-4090-bd01-608e57c15a87" class="numbered-list" start="13"><li>对事件的整体/细节进行分析（时段 v.s. 时刻）<ol type="a" id="a33a46c8-97d4-40bf-af9a-614b416de2fc" class="numbered-list" start="1"><li>可疑人</li></ol><ol type="a" id="3c57986a-4626-412a-8750-b5cea863ad79" class="numbered-list" start="2"><li>可疑事</li></ol><ol type="a" id="62d82316-7b3a-44c7-8275-bcbbcf31fc7e" class="numbered-list" start="3"><li>可疑行为</li></ol></li></ol><ol type="1" id="910e2990-efe5-49eb-a226-80c5b9bdd7f1" class="numbered-list" start="14"><li>问题：时间作为维度，抢了其他维度的展示位置（例如，在river-based visualization中）<ol type="a" id="95aad76a-6a9a-41f1-8686-76ff0a3af83a" class="numbered-list" start="1"><li>partially解决：circular vis / map-based vis<ol type="i" id="ff9b6390-ee53-4f63-9a8a-171cca6f0ae2" class="numbered-list" start="1"><li>利用空间加了一些其他维度的entities</li></ol></li></ol></li></ol></details></li></ul><ul id="bbdad9b6-62b8-443e-9a39-7a4588bd5597" class="toggle"><li><details open=""><summary>认证类型</summary><ol type="1" id="eb5ed604-5422-49ea-b44e-68f2935f3d6b" class="numbered-list" start="1"><li>意见领袖<ol type="a" id="1fc5c1a1-4f81-4df1-9b27-a26a70ccb061" class="numbered-list" start="1"><li>微博博文的影响力计算指标之一</li></ol><ol type="a" id="aa8bc51b-ae53-4786-ad91-85550ad29ecf" class="numbered-list" start="2"><li>用户的属性之一</li></ol></li></ol><ol type="1" id="50f22419-7a0e-4084-be3f-8749323f9b5c" class="numbered-list" start="2"><li>群体分析（普通用户群、领域用户群、大v用户群）<ol type="a" id="892287c0-3a9c-4ad1-a75d-1356459ae566" class="numbered-list" start="1"><li>用户群上的行为<ol type="i" id="73c423a4-b5e7-48ac-a6d6-32b63d293455" class="numbered-list" start="1"><li>例如很多大v都关注了、转发了，证明事情的热度是有一定规模的；甚至可能造成舆论</li></ol><ol type="i" id="c32f2911-f722-4383-a922-4c2bbb35b6ff" class="numbered-list" start="2"><li>例如某一条博文的转发用户全是大v？</li></ol><ol type="i" id="4c9276ea-e458-449c-8054-097e453749cf" class="numbered-list" start="3"><li>某事件的参与者全是大v → 可以用来捕捉热点<ul id="50930838-9dfd-4215-84bb-1bc89423e94c" class="bulleted-list"><li style="list-style-type:disc">注意：不同类型的大v关注的热点可能不同</li></ul></li></ol></li></ol><ol type="a" id="001c9854-acc7-4676-8ed5-35a074cc1d5b" class="numbered-list" start="2"><li>群体的焦点（话题）改变 → 事件改变（演化）<ul id="6efb4e0d-355a-49b9-a677-a4c0cc06e278" class="bulleted-list"><li style="list-style-type:disc">Circular layout → （突出）关键用户</li></ul><ul id="855a6402-ee86-4a12-b48d-61d5f7f45a2c" class="bulleted-list"><li style="list-style-type:disc">↓→事件的整体扩散</li></ul></li></ol><ol type="a" id="acec01da-3435-4f9f-8dd2-95132da88d22" class="numbered-list" start="3"><li>用户群的态度</li></ol></li></ol><ol type="1" id="8740c666-642d-44e6-81c9-c1effaecd537" class="numbered-list" start="3"><li>异常检测<ol type="a" id="52fdc98f-30b8-46aa-9c49-6c96d90c67ee" class="numbered-list" start="1"><li>同一个大v的活跃度<ol type="i" id="e5ba830c-47a8-4ac3-9e36-776aef28a2d4" class="numbered-list" start="1"><li>参与的事件分析</li></ol><ol type="i" id="14df2a63-e848-44c0-98ec-6157294a782c" class="numbered-list" start="2"><li>网络轨迹分析</li></ol><ol type="i" id="a19b533d-b73b-4dea-b444-fd18dc4aabd8" class="numbered-list" start="3"><li>大v排名：前几名拿出来，分析，统一用户的多种属性</li></ol></li></ol></li></ol><ol type="1" id="a11174ab-66ac-4730-b1c4-efe61d5108bf" class="numbered-list" start="4"><li>不同认证类型 → 类比为不同传感器<ol type="a" id="2e1176ce-d1e2-4f76-b81c-4c3eb457cdf5" class="numbered-list" start="1"><li>功能不同</li></ol><ol type="a" id="21a27e3e-697b-483a-acc8-18d318965b5b" class="numbered-list" start="2"><li>影响力不同</li></ol><ol type="a" id="a63743c7-54cb-4798-aec6-cfeb9c214f0e" class="numbered-list" start="3"><li>适用环境也不同</li></ol><hr id="ee0bfbe7-c49a-4b47-aebc-e5dba055f97c"/><ul id="911bb7ed-9b41-4e7c-a74e-3a0d04813ddd" class="bulleted-list"><li style="list-style-type:disc">直接分析<ul id="9b6c7520-0429-47db-82da-6e78864039da" class="bulleted-list"><li style="list-style-type:circle">分析大v们关注的点</li></ul></li></ul></li></ol><ol type="1" id="71f4918f-da0e-465f-b0a8-5781f49cfa2d" class="numbered-list" start="5"><li>研究普通用户的分布 → 众包方向（<mark class="highlight-red_background">有待深入思考</mark>）<ol type="a" id="915ee679-5bd2-4d57-9a76-80ab63d06f61" class="numbered-list" start="1"><li>设计算法 → 找受众</li></ol></li></ol><ol type="1" id="319793b7-a05f-4874-b914-ac5f93c0e9b5" class="numbered-list" start="6"><li>情感倾向<ol type="a" id="ef48af9d-7375-4b48-aebd-d88843829bed" class="numbered-list" start="1"><li>普通用户群的情感倾向</li></ol><ol type="a" id="2f2f2aba-d80b-4142-b7d0-694117c05a51" class="numbered-list" start="2"><li>大v用户群的情感倾向</li></ol><ul id="f635c1b4-7c3f-4582-9239-749e2d257bf2" class="bulleted-list"><li style="list-style-type:disc">进一步分析用户的态度<ul id="38372f4e-a716-4521-b815-e6139d58717f" class="bulleted-list"><li style="list-style-type:circle">大v用户：态度影响力更大</li></ul><ul id="3a25eb90-cf15-42cb-8185-b204feb6d2f3" class="bulleted-list"><li style="list-style-type:circle">普通用户：更具有代表性</li></ul></li></ul><ul id="6fad1211-e694-489c-baa5-95c7112a2eab" class="bulleted-list"><li style="list-style-type:disc">结合分析</li></ul></li></ol><ol type="1" id="761505b4-8944-4a83-8c3b-1b35c3e39999" class="numbered-list" start="7"><li>总体原则<ol type="a" id="52aa6fe9-c736-417d-89c5-2b70e8cf928f" class="numbered-list" start="1"><li>看到涉及用户的实体/可视分析方法，想一想，ta的认证类型会不会有影响？算不算一个重要的因素？然后把“认证类型”纳入考虑维度，思考一下会有什么发现</li></ol></li></ol></details></li></ul><ul id="c6353a2d-fad9-467e-a2f2-952313bc6fc6" class="toggle"><li><details open=""><summary>性别</summary><ol type="1" id="47bb9fe0-94d3-4f33-a2bf-bfaff10d0a9f" class="numbered-list" start="1"><li>关注情感表达的不同<ol type="a" id="eba81de1-9383-416a-bc78-7245ba46b31a" class="numbered-list" start="1"><li>男性/女性，分开关注（会不会在情感表达方面更高效）<ul id="48f6aeaf-36b9-4882-a6b0-1d97f5928877" class="bulleted-list"><li style="list-style-type:disc">因为男性与女性表达情感不同</li></ul><ul id="077485b8-dcc7-4902-bce9-81821969b156" class="bulleted-list"><li style="list-style-type:disc">因为男性与女性的关注点不同<ul id="f7510162-45d2-444e-a085-b811f763e59d" class="bulleted-list"><li style="list-style-type:circle">一般地，（似乎）社交媒体上普遍男性编辑文字较少；女性编辑文字较多</li></ul></li></ul></li></ol></li></ol></details></li></ul><ul id="b6db73bf-81d9-479f-9964-de7f27b70c68" class="toggle"><li><details open=""><summary>信源地域（plus城市）</summary><ul id="61ebeb38-2cf3-45b2-8199-9feb65f02fb9" class="bulleted-list"><li style="list-style-type:disc">时空/地理/位置/地域/地区</li></ul><ol type="1" id="0c9b66a1-4556-43e2-97a6-37b2d64197ae" class="numbered-list" start="1"><li>和其他数据搭配<ol type="a" id="771476d9-533c-458d-a2d8-6f931617fb05" class="numbered-list" start="1"><li>地理位置（geo-tagged data）+ POI + 土地使用情况 → 城市规划</li></ol></li></ol><ol type="1" id="ad5ba7f6-afff-4f04-b0bf-216aa641994e" class="numbered-list" start="2"><li>轨迹</li></ol><ol type="1" id="761254ff-85a1-4ef4-9dcd-c9a7f056ef03" class="numbered-list" start="3"><li>事件的地理分布、时空分布</li></ol><ol type="1" id="aa42ff42-a1f8-4c00-8006-f4ecfaba05ad" class="numbered-list" start="4"><li>数据清洗<ol type="a" id="502e1469-8e97-44c5-812a-fcf32d861ff1" class="numbered-list" start="1"><li>例如：把没有地理位置的博文删掉</li></ol></li></ol><ol type="1" id="354d1a4c-9aca-49f2-b8d5-40729bd4d55e" class="numbered-list" start="5"><li>人的属性<ol type="a" id="968ae76b-a436-4dd2-af52-40f30f9f5981" class="numbered-list" start="1"><li>位置/老家</li></ol><ol type="a" id="e8dead23-1ede-4866-837d-b0838afa915e" class="numbered-list" start="2"><li>参与人的位置分布情况</li></ol></li></ol><ol type="1" id="89dfe151-d1ac-4766-b145-44e7f0520726" class="numbered-list" start="6"><li>消息在不同地区出现的情况</li></ol><ol type="1" id="d951c86f-1c75-4bd0-bb66-262b8a813144" class="numbered-list" start="7"><li>鹰眼功能（比例尺 - 缩放）<ol type="a" id="b596097f-e6d1-4b7e-a8bc-9004d1eae861" class="numbered-list" start="1"><li>不同时间比例</li></ol><ol type="a" id="d2550be7-8022-446e-8730-bde7f0bff91d" class="numbered-list" start="2"><li>不同的地理范畴比例（县级、地市级、省级、国家级…）</li></ol><ul id="b41a65d2-585c-4db5-bada-2fe832b257c5" class="bulleted-list"><li style="list-style-type:disc">移动模式之间的对比分析</li></ul></li></ol><ol type="1" id="0a69150c-60dd-41a3-b6d9-75ede750da34" class="numbered-list" start="8"><li>可视化方法<ol type="a" id="ca47b424-11cd-49b6-b5f0-f063fb99ece4" class="numbered-list" start="1"><li>map-based visualization</li></ol><ol type="a" id="3e3409fa-6a05-442a-8b00-14d6ff69f8b5" class="numbered-list" start="2"><li>time-line chart</li></ol></li></ol></details></li></ul><h2 id="5b1d4675-e6d4-47c2-a55c-972f8ada5f19" class="">可视化与交互提供了一个机会：</h2><ul id="49542096-dc6a-43c8-a3ac-b3b8b6ae6d42" class="bulleted-list"><li style="list-style-type:disc">通过可视观察 &amp; 交互，让用户/分析师/领域专家得以建立假说，再通过进一步交互/领域知识/科学实验来验证假说</li></ul><p id="2cd3a282-e52d-4104-87ea-df4ca281e417" class="">
+</p><p id="94ff2b34-1341-42f8-a960-1261840eaf90" class="">
+</p><h2 id="289e6141-ae0e-4f45-9d85-9780b25098ae" class="">几个非常wonderful的方向（待探索）：</h2><ul id="f487e6d1-19e8-431d-bd62-2fbc0d1cecb5" class="toggle"><li><details open=""><summary>借助普通用户群的广泛性：考虑社交媒体可视化 + 众包；社交媒体用户就像一个传感器！遍布世界，捕捉/感知时空、文本信息。</summary><ul id="4d97f5ea-8176-42c6-9edd-dbf764d7dedd" class="bulleted-list"><li style="list-style-type:disc">众包<ul id="84744cf5-b274-455e-8188-d0c6b14a7bae" class="bulleted-list"><li style="list-style-type:circle">利用众包、大众智慧来帮助了解&amp;挖掘兴趣、探索新想法、验证理论</li></ul><ul id="22f20739-3933-463d-8b5e-2954a6c577b5" class="bulleted-list"><li style="list-style-type:circle">crowdsourcing event analysis platform</li></ul><ul id="3e4f23f5-124c-4319-a7fc-c4d30189a413" class="bulleted-list"><li style="list-style-type:circle">实时掌握时空事件 - 新闻</li></ul></li></ul><ul id="8a5d7d08-ce62-4178-8bbc-ebb7d8dfd8f3" class="bulleted-list"><li style="list-style-type:disc">社交媒体+</li></ul><ul id="366e417e-9800-495a-993a-757167f5fe7a" class="bulleted-list"><li style="list-style-type:disc">传感器这个比喻太好了！那么传感器相关的算法、知识是否可以用到社交媒体的数据分析中呢？</li></ul></details></li></ul><ul id="9600570e-466c-4909-8341-c550eaf11333" class="toggle"><li><details open=""><summary>社交媒体的其他数据 - multimedia的进一步挖掘</summary><ul id="a3379981-dc2e-404c-bb78-d11b5cd8637c" class="bulleted-list"><li style="list-style-type:disc">社交媒体中的视频分析十分重要，既能把当前的图形图像的技术、理论验证使用起来，也可以结合社交媒体的其他特点进行深入分析</li></ul></details></li></ul><ul id="102572c7-6bf6-4941-9303-7db89ce94fd3" class="toggle"><li><details open=""><summary>社交媒体的隐私问题</summary></details></li></ul><ul id="42e56d7c-4de2-40a9-a98b-a37c05a896d5" class="toggle"><li><details open=""><summary>社交媒体的数据可靠性问题</summary></details></li></ul><p id="deeff385-ab6d-4369-b168-0ce58cf71832" class="">
+</p><p id="0e495018-ca94-4321-859c-2c2ee4f22ccd" class="">
+</p><p id="4cb046af-ad1b-492a-89cc-09dde4cf5a9f" class="">
+</p>
+</div></article></body></html>
