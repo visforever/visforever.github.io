@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    /* 外面的灰色框框 */
+    #my_dataviz {
+      margin: 5px;
+      padding: 20px;
+      border: 1px solid rgba(240, 21, 21, 0.623);
+    }
+
+
+    /* 设置各级标题style */
+    body, h1, p {
+      margin: 0;
+      padding: 0;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 1em;
+      color: #333;
+      font-weight: 400;
+    }
+
+    h1 {
+      line-height: 1em;
+      font-size: 1.75em;
+      font-weight: 900;
+      color: #000;
+    }
+    /* 提示框 */
+    .tooltip {
+      position: absolute;
+      padding: 7px;
+      font-size: 0.9em;
+      pointer-events: none;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+
+      /* 添加阴影效果 */
+      -moz-box-shadow:    3px 3px 10px 0px rgba(0, 0, 0, 0.25);
+      -webkit-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
+      box-shadow:         3px 3px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .tooltip p {
+      margin: 0;
+      padding: 0;
+    }
+    .tooltip table {
+      margin: 0;
+      padding: 0;
+      border-collapse: collapse;
+    }
+
+
+    /*交互代码 start*/
+    
+    .controls {
+    flex-basis: 200px;
+    padding: 0 5px;
+    width: 200px;
+    }
+
+    .controls .force {
+    background-color:rgb(238, 238, 238);
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px 0;
+    }
+    .controls .force p label { margin-right: .5em; font-size: 120%; font-weight: bold;}
+    .controls .force p { margin-top: 0;}
+    .controls input[type="range"] { margin: 0 5% 0.5em 5%; width: 90%; }
+
+    /*交互代码 end*/
+
+</style>
+<!-- 加载d3.v6 -->
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<body>
+
+
+<!-- 创建一个div -->
+<div id="my_dataviz">
+    <h1>Forced-layout Graph Visulaization</h1>
+</div>
+
+<script>
+
+        
+
+    // 设置画布大小-四周留间距
+    let margin = {top: 10, right: 30, bottom: 30, left: 40},
+    width = 1800 - margin.left - margin.right,
+    height = 1920 - margin.top - margin.bottom;
+
+    // 创建SVG元素并添加到graph中
+    let svg = d3.select("#my_dataviz")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+
+      // 创建SVG元素并添加到matrix中
+    let svg2 = d3.select("#my_matrixviz")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right - 200)
+        .attr("height", height + margin.top + margin.bottom)
+
+    // 定义颜色函数
+    let color = d3.scaleOrdinal(d3.schemeCategory10); // color有10种颜色，第11种为第（11 % 10 = 1）种
+
+    
+        
+        //////////// FORCE SIMULATION //////////// 
+
+        // force simulator
+        var simulation_i = d3.forceSimulation();
+
+        // set up the simulation and event to update locations after each tick
+        function initializeSimulation() {
+            simulation_i.nodes(graph.nodes);
+            initializeForces();
+            simulation_i.on("tick", ticked);
+        }
+
+    
+    // values for all forces
+    forceProperties = {
+        center: {
+            x: 0.5,
+            y: 0.5
+        }
+    }
+
+
+    // add forces to the simulation
+    function initializeForces() {
+        // add forces and associate each with a name
+        simulation_i
+            .force("center", d3.forceCenter())
+        // apply properties to each of the forces
+        updateForces();
+    }
+
+
+    // apply new force properties
+    function updateForces() {
+        // get each force by name and update the properties
+        simulation_i.force("center")
+            .x(width * forceProperties.center.x)
+            .y(height * forceProperties.center.y);
+
+        console.log("----------->" + width * forceProperties.center.x)
+    }
+
+
+    // convenience function to update everything (run after UI input)
+    function updateAll() {
+        updateForces();
+    }
+
+    
+
+    // 读取数据，该数据是HKUST_coauthor科研人物论文引用关系信息
+    // d3.json("HKUST_coauthor_graph.json").then(function(data) {
+        d3.json("https://raw.githubusercontent.com/visforever/visforever.github.io/main/blog/blogNotes/data_networks.json").then(function(graph) {
+
+            
+            // initializeSimulation();
+
+        // // console.log(data)
+        // let NodeFilterArray = []
+        // let IdArray = []
+        // let IdName = []
+
+        // // 遍历nodes，获取dept属性为‘CSE’的node, node对应的id, node对应的name
+        // for(var i = 0; i < data["nodes"].length; i++)
+        // {
+        //     console.log("----temp look:" + data["nodes"][i])
+        //     NodeFilterArray.push(data["nodes"][i]) // node
+        //     IdArray.push(data["nodes"][i]["id"]) // node的id被存下来了（这里存下来的都是CSE的人）
+        //     IdName.push(data["nodes"][i]["name"]) // node的name被存下来了
+            
+        // }
+
+
+        // var EdgeFilterArray = [];
+
+        // data["edges"].forEach(element => {
+        //     // console.log(element);
+        //     var tmpSource = element['source'];
+        //     var tmpTarget = element['target'];
+        //     // IdArray中存下的都是CSE的研究者：这给if语句就是为了找出与CSE研究者相关的所有边
+        //     if(IdArray.includes(tmpSource) && IdArray.includes(tmpTarget))
+        //     {
+        //         EdgeFilterArray.push(element);
+        //     }
+        // });
+
+        // // 自己构造一个对象，只包括顶点集（nodes）和边集（edges）
+        // let graph = {}
+        // graph["nodes"] = NodeFilterArray;
+        // graph["edges"] = EdgeFilterArray;
+
+        // let graph = data
+        // console.log(graph)
+        
+        // 考虑用边的publications属性的长度(发表论文的数量)作为边的宽度
+        // console.log(graph['edges'][0]['publications'].length);
+
+   
+
+        // 创建一个力学模拟器
+  	    let simulation = d3.forceSimulation(graph.nodes)
+            // 连接力
+            .force("link", d3.forceLink(graph.edges)	
+                            .id(d => d.id) 	// 每个节点的id的获取方式 
+                            .strength(0.5)
+                            .distance(15)
+                            // .iterations(-1)
+                )
+            .force("forceX", d3.forceX()
+                            .strength(0.1)
+                            .x(0.1 * width)
+                )
+                
+            .force("forceY", d3.forceY()
+                            .strength(0.1)
+                            .y(0.1*width)
+                )
+            // .force("link", d3.forceLink().iterations(-1))
+            // 万有引力
+            // .force("charge", d3.forceManyBody().strength(-100)) 
+            .force("charge", d3.forceManyBody().strength(-30))
+            // 用指定的x坐标和y坐标创建一个新的居中力，如果未指定x和y，则默认为⟨0,0⟩
+            .force("center", d3.forceCenter(800, height / 2)); 
+
+
+        // 定义人物节点之间连线的信息
+        let link = svg.append("g")
+            .attr("stroke", "#999")
+            .attr("stroke-opacity", 0.6)
+            .selectAll("line") // 用line元素来绘制
+            .data(graph.edges) // 绑定json文件中的links数据
+            .join("line")
+            .attr("stroke-width", 1)
+            // 连线粗细通过线的合作成果的数量计算
+            .attr("stroke-width", d => d.weight)
+
+        let tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+        // 定义人物节点信息
+        let node = svg.append("g")
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 1.5)
+            .selectAll("circle") // 人物节点通过圆来绘制
+            .data(graph.nodes)// 为人物节点绑定nodes数据
+            .join("circle")
+            .attr("r", 5)// 设置节点半径
+            // 设置节点的填充色，通过节点的group属性来计算节点的填充颜色
+            .attr("fill", function(d) { return color(d.id); })
+            .call(
+                    // 以定义的这些节点为参数，调用drag()函数
+                    // 绑定拖拽函数的三个钩子，即拖拽开始、拖拽中、拖拽结束
+                    d3.drag()
+                        .on("start", dragstarted)
+                        .on("drag", dragged)
+                        .on("end", dragended)
+                )
+            .on('mouseover', function (event,d) {
+                // console.log("=======>current node is: " + d.id);
+
+                
+                // 此时还在node.on('mouseover')事件中
+                var idA = []
+                idA.push(d.id); // 把当前鼠标触碰到的node的id存下来
+                
+                // Graph视图中的所有边（each），每条边有两个端点
+                link.each(function(Edges, index) {
+
+                    // 遍历Graph视图中所有的边，如果边的顶点和鼠标指向的顶点一样的话
+                    if(Edges.source.id == d.id || Edges.target.id == d.id)
+                    {
+                        // 外部条件的细化讨论
+                        if(Edges.source.id == d.id)
+                        {
+                            idA.push(Edges.target.id)
+                        }
+                        else if(Edges.target.id == d.id)
+                        {
+                            idA.push(Edges.source.id)
+                        }
+
+                        // 此时，idA中存储的是所有与鼠标触及node有公共边的node的id
+                        d3.select(this)              
+                            .transition()
+                            .duration(100)
+                            .attr("stroke", "red")
+                            .transition()
+                            .duration(1000)
+                            .attr("stroke", "#999")
+                    }
+
+                })
+                
+
+                // 此时还在node.on('mouseover')事件中
+                // Graph视图中的所有顶点（each）
+                node.each(function(Nodes, index) {
+
+                    // 判断每个顶点和idA中的每个顶点是否相同
+                    idA.forEach(element => {
+                        if(Nodes.id == element)
+                        {
+                            d3.select(this)
+                            .transition()
+                            .duration(100)
+                            .attr("r",10) // 顶点先变大
+                            .transition()
+                            .duration(1000)
+                            .attr("r",5) // 顶点再变小（恢复原大小）
+                        }
+                    });
+
+                })
+
+                tooltip.transition()
+                    .duration(200) // 设置transition效果的速度，默认为500ms
+                    .style("opacity", 1);
+
+                tooltip.html(
+                            "<p> id: " + d.id + "<br>" +
+                            "<p> Name: " + d.name + "<br>" 
+                            )
+                        // 设置tooltip距离鼠标的相对位置
+                        .style("left", (event.pageX + 15) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+
+            })
+            .on('mouseout', function (event,d) {
+                d3.select(this).transition().attr("r", 5);
+                tooltip.transition()
+                    .duration(250)
+                    .style("opacity", 0);
+            });
+
+            // 定义simulation内部计时器tick每次结束时的动作
+            simulation.on("tick", () => {
+                // 每次tick计时到时，连接线的响应动作
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+
+                // 每次tick计时到时，节点的响应动作
+                node
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y);
+            });
+
+            // function ticked() {
+            //     link
+            //         .attr("x1", d => d.source.x)
+            //         .attr("y1", d => d.source.y)
+            //         .attr("x2", d => d.target.x)
+            //         .attr("y2", d => d.target.y);
+
+            //     // 每次tick计时到时，节点的响应动作
+            //     node
+            //         .attr("cx", d => d.x)
+            //         .attr("cy", d => d.y);
+
+            // }
+
+            // 定义开始拖拽节点时的动作，注意v6版本是通过event返回的函数参数来处理的 
+            function dragstarted(event) 
+            {
+              // 当开始拖动时，restart()方法重新启动模拟器的内部计时器并返回模拟器，
+              // alphaTarget(0.3) => alpha将保持在0.3左右，使模拟不断移动
+              if (!event.active) simulation.alphaTarget(0.3).restart();
+                event.subject.fx = event.subject.x;
+                event.subject.fy = event.subject.y;
+            }
+
+            // 定义拖拽中的动作
+            function dragged(event) 
+            {
+                event.subject.fx = event.x;
+                event.subject.fy = event.y;
+            }
+
+            // 定义拖拽结束的动作
+            // 在拖动结束时，alphaTarget被设置回0，因此再次稳定下来，这就是阻力相互作用后力返回的原因
+            function dragended(event) 
+            {
+                if (!event.active) simulation.alphaTarget(0);
+                event.subject.fx = null;
+                event.subject.fy = null;
+            }
+
+
+
+    });
+
+
+</script>
+</body>
